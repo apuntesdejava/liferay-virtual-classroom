@@ -1,0 +1,4 @@
+Bundle-Name: course-portlet
+Bundle-SymbolicName: com.apuntesdejava.virtualclassroom.course
+Bundle-Version: 1.0.0
+Export-Package: com.apuntesdejava.virtualclassroom.course.constants
