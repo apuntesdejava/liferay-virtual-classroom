@@ -1,0 +1,10 @@
+Bundle-Name: classroom-api
+Bundle-SymbolicName: com.apuntesdejava.virtualclassroom.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.apuntesdejava.virtualclassroom.exception,\
+	com.apuntesdejava.virtualclassroom.model,\
+	com.apuntesdejava.virtualclassroom.service,\
+	com.apuntesdejava.virtualclassroom.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../classroom-service/service.xml

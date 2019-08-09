@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_2_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="com.apuntesdejava.virtualclassroom">
+	<namespace>vc</namespace>
+	<!--<entity data-source="sampleDataSource" local-service="true" name="Foo" remote-service="false" session-factory="sampleSessionFactory" table="foo" tx-manager="sampleTransactionManager uuid="true"">-->
+	<entity name="Course" local-service="true" remote-service="true">
+
+		<!-- PK fields -->
+
+		<column name="courseId" primary="true" type="long"></column>
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long"></column>
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long"></column>
+		<column name="userId" type="long"></column>
+		<column name="userName" type="String"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+        <column name="name" type="String" localized="true"></column>
+        <column name="description" type="String"></column>
+        <finder name="UserId" return-type="Collection">
+            <finder-column name="userId"></finder-column>
+        </finder>
+        <finder name="GroupId" return-type="Collection">
+            <finder-column name="groupId"></finder-column>
+        </finder>
+        <finder name="U_G" return-type="Collection">
+            <finder-column name="userId"></finder-column>
+            <finder-column name="groupId"></finder-column>
+        </finder>
+	</entity>
+	<entity name="CourseSession" local-service="true"
+		remote-service="true">
+
+
+		<!-- PK fields -->
+
+		<column name="courseSessionId" primary="true" type="long"></column>
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long"></column>
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long"></column>
+		<column name="userId" type="long"></column>
+		<column name="userName" type="String"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+        <column name="title" type="String"></column>
+        <column name="description" type="String"></column>
+        <column name="dueDate" type="Date"></column>
+        <column name="courseId" type="long"></column>
+        <finder name="CourseId" return-type="Collection">
+            <finder-column name="courseId"></finder-column>
+        </finder>
+	</entity>
+</service-builder>
