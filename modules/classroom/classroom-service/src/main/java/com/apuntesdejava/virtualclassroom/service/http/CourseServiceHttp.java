@@ -412,6 +412,110 @@ public class CourseServiceHttp {
 		}
 	}
 
+	public static java.util.List
+		<com.apuntesdejava.virtualclassroom.model.Course> findByKeywords(
+			HttpPrincipal httpPrincipal, long groupId, String keywords,
+			int start, int end,
+			com.liferay.portal.kernel.util.OrderByComparator
+				<com.apuntesdejava.virtualclassroom.model.Course>
+					orderByComparator) {
+
+		try {
+			MethodKey methodKey = new MethodKey(
+				CourseServiceUtil.class, "findByKeywords",
+				_findByKeywordsParameterTypes11);
+
+			MethodHandler methodHandler = new MethodHandler(
+				methodKey, groupId, keywords, start, end, orderByComparator);
+
+			Object returnObj = null;
+
+			try {
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
+			}
+			catch (Exception e) {
+				throw new com.liferay.portal.kernel.exception.SystemException(
+					e);
+			}
+
+			return (java.util.List
+				<com.apuntesdejava.virtualclassroom.model.Course>)returnObj;
+		}
+		catch (com.liferay.portal.kernel.exception.SystemException se) {
+			_log.error(se, se);
+
+			throw se;
+		}
+	}
+
+	public static com.apuntesdejava.virtualclassroom.model.Course deleteCourse(
+			HttpPrincipal httpPrincipal, long courseId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		try {
+			MethodKey methodKey = new MethodKey(
+				CourseServiceUtil.class, "deleteCourse",
+				_deleteCourseParameterTypes12);
+
+			MethodHandler methodHandler = new MethodHandler(
+				methodKey, courseId);
+
+			Object returnObj = null;
+
+			try {
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
+			}
+			catch (Exception e) {
+				if (e instanceof
+						com.liferay.portal.kernel.exception.PortalException) {
+
+					throw (com.liferay.portal.kernel.exception.PortalException)
+						e;
+				}
+
+				throw new com.liferay.portal.kernel.exception.SystemException(
+					e);
+			}
+
+			return (com.apuntesdejava.virtualclassroom.model.Course)returnObj;
+		}
+		catch (com.liferay.portal.kernel.exception.SystemException se) {
+			_log.error(se, se);
+
+			throw se;
+		}
+	}
+
+	public static com.apuntesdejava.virtualclassroom.model.Course fetchCourse(
+		HttpPrincipal httpPrincipal, long courseId) {
+
+		try {
+			MethodKey methodKey = new MethodKey(
+				CourseServiceUtil.class, "fetchCourse",
+				_fetchCourseParameterTypes13);
+
+			MethodHandler methodHandler = new MethodHandler(
+				methodKey, courseId);
+
+			Object returnObj = null;
+
+			try {
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
+			}
+			catch (Exception e) {
+				throw new com.liferay.portal.kernel.exception.SystemException(
+					e);
+			}
+
+			return (com.apuntesdejava.virtualclassroom.model.Course)returnObj;
+		}
+		catch (com.liferay.portal.kernel.exception.SystemException se) {
+			_log.error(se, se);
+
+			throw se;
+		}
+	}
+
 	private static Log _log = LogFactoryUtil.getLog(CourseServiceHttp.class);
 
 	private static final Class<?>[] _addCourseParameterTypes0 = new Class[] {
@@ -444,6 +548,16 @@ public class CourseServiceHttp {
 	};
 	private static final Class<?>[] _countByU_GParameterTypes10 = new Class[] {
 		long.class, long.class
+	};
+	private static final Class<?>[] _findByKeywordsParameterTypes11 =
+		new Class[] {
+			long.class, String.class, int.class, int.class,
+			com.liferay.portal.kernel.util.OrderByComparator.class
+		};
+	private static final Class<?>[] _deleteCourseParameterTypes12 =
+		new Class[] {long.class};
+	private static final Class<?>[] _fetchCourseParameterTypes13 = new Class[] {
+		long.class
 	};
 
 }

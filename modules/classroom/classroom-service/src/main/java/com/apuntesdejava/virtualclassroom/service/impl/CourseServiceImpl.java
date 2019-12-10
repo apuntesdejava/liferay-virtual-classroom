@@ -14,18 +14,18 @@
 
 package com.apuntesdejava.virtualclassroom.service.impl;
 
-import com.apuntesdejava.virtualclassroom.model.Course;
-import com.apuntesdejava.virtualclassroom.service.base.CourseServiceBaseImpl;
-
-import com.liferay.portal.aop.AopService;
-import com.liferay.portal.kernel.exception.PortalException;
-import com.liferay.portal.kernel.service.ServiceContext;
-
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
 import org.osgi.service.component.annotations.Component;
+
+import com.apuntesdejava.virtualclassroom.model.Course;
+import com.apuntesdejava.virtualclassroom.service.base.CourseServiceBaseImpl;
+import com.liferay.portal.aop.AopService;
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.service.ServiceContext;
+import com.liferay.portal.kernel.util.OrderByComparator;
 
 /**
  * The implementation of the course remote service.
@@ -45,8 +45,13 @@ import org.osgi.service.component.annotations.Component;
  * @author Brian Wing Shun Chan
  * @see CourseServiceBaseImpl
  */
-@Component(property = { "json.web.service.context.name=vc",
-		"json.web.service.context.path=Course" }, service = AopService.class)
+@Component(
+		property = 
+			{	"json.web.service.context.name=vc",
+				"json.web.service.context.path=Course" 
+			}, 
+		service = AopService.class
+)
 public class CourseServiceImpl extends CourseServiceBaseImpl {
 
 	/*
@@ -82,7 +87,7 @@ public class CourseServiceImpl extends CourseServiceBaseImpl {
 	public int countByUserId(long userId) {
 		return courseLocalService.countByUserId(userId);
 	}
-
+	
 	public List<Course> findByGroupId(long groupId, int start, int end) {
 		return courseLocalService.findByGroupId(groupId, start, end);
 	}
@@ -91,7 +96,7 @@ public class CourseServiceImpl extends CourseServiceBaseImpl {
 		return courseLocalService.countByGroupId(groupId);
 	}
 
-	public List<Course> findByU_G(long userId, long groupId) {
+	public List<Course> findByU_G(long userId, long groupId) { 
 		return courseLocalService.findByU_G(userId, groupId);
 	}
 
@@ -102,4 +107,15 @@ public class CourseServiceImpl extends CourseServiceBaseImpl {
 	public int countByU_G(long userId, long groupId) {
 		return courseLocalService.countByU_G(userId, groupId);
 	}
+	
+	public List<Course> findByKeywords(long groupId,String keywords, int start, int end, OrderByComparator<Course> orderByComparator){
+		return courseLocalService.findByKeywords(groupId, keywords, start, end, orderByComparator);
+	}
+	public Course deleteCourse(long courseId) throws PortalException {
+		return courseLocalService.deleteCourse(courseId);
+	}
+	public Course fetchCourse(long courseId) {
+		return courseLocalService.fetchCourse(courseId);
+	}
+	 
 }

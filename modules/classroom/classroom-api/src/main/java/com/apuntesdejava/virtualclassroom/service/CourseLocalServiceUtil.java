@@ -229,6 +229,17 @@ public class CourseLocalServiceUtil {
 	}
 
 	public static java.util.List
+		<com.apuntesdejava.virtualclassroom.model.Course> findByKeywords(
+			long groupId, String keywords, int start, int end,
+			com.liferay.portal.kernel.util.OrderByComparator
+				<com.apuntesdejava.virtualclassroom.model.Course>
+					orderByComparator) {
+
+		return getService().findByKeywords(
+			groupId, keywords, start, end, orderByComparator);
+	}
+
+	public static java.util.List
 		<com.apuntesdejava.virtualclassroom.model.Course> findByU_G(
 			long userId, long groupId) {
 

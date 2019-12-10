@@ -270,6 +270,65 @@ public class CourseServiceSoap {
 		}
 	}
 
+	public static com.apuntesdejava.virtualclassroom.model.CourseSoap[]
+			findByKeywords(
+				long groupId, String keywords, int start, int end,
+				com.liferay.portal.kernel.util.OrderByComparator
+					<com.apuntesdejava.virtualclassroom.model.Course>
+						orderByComparator)
+		throws RemoteException {
+
+		try {
+			java.util.List<com.apuntesdejava.virtualclassroom.model.Course>
+				returnValue = CourseServiceUtil.findByKeywords(
+					groupId, keywords, start, end, orderByComparator);
+
+			return com.apuntesdejava.virtualclassroom.model.CourseSoap.
+				toSoapModels(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static com.apuntesdejava.virtualclassroom.model.CourseSoap
+			deleteCourse(long courseId)
+		throws RemoteException {
+
+		try {
+			com.apuntesdejava.virtualclassroom.model.Course returnValue =
+				CourseServiceUtil.deleteCourse(courseId);
+
+			return com.apuntesdejava.virtualclassroom.model.CourseSoap.
+				toSoapModel(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static com.apuntesdejava.virtualclassroom.model.CourseSoap
+			fetchCourse(long courseId)
+		throws RemoteException {
+
+		try {
+			com.apuntesdejava.virtualclassroom.model.Course returnValue =
+				CourseServiceUtil.fetchCourse(courseId);
+
+			return com.apuntesdejava.virtualclassroom.model.CourseSoap.
+				toSoapModel(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
 	private static Log _log = LogFactoryUtil.getLog(CourseServiceSoap.class);
 
 }

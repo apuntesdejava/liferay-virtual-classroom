@@ -14,20 +14,24 @@
 
 package com.apuntesdejava.virtualclassroom.service.impl;
 
-import com.apuntesdejava.virtualclassroom.model.Course;
-import com.apuntesdejava.virtualclassroom.service.base.CourseLocalServiceBaseImpl;
-
-import com.liferay.portal.aop.AopService;
-import com.liferay.portal.kernel.exception.PortalException;
-import com.liferay.portal.kernel.model.User;
-import com.liferay.portal.kernel.service.ServiceContext;
-
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
 import org.osgi.service.component.annotations.Component;
+
+import com.apuntesdejava.virtualclassroom.model.Course;
+import com.apuntesdejava.virtualclassroom.service.base.CourseLocalServiceBaseImpl;
+import com.liferay.portal.aop.AopService;
+import com.liferay.portal.kernel.dao.orm.DynamicQuery;
+import com.liferay.portal.kernel.dao.orm.Junction;
+import com.liferay.portal.kernel.dao.orm.RestrictionsFactoryUtil;
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.model.User;
+import com.liferay.portal.kernel.service.ServiceContext;
+import com.liferay.portal.kernel.util.OrderByComparator;
+import com.liferay.portal.kernel.util.Validator;
 
 /**
  * The implementation of the course local service.
@@ -121,5 +125,20 @@ public class CourseLocalServiceImpl extends CourseLocalServiceBaseImpl {
 	public int countByU_G(long userId, long groupId) {
 		return coursePersistence.countByU_G(userId, groupId);
 	}
+	
+	public List<Course> findByKeywords(long groupId,String keywords, int start, int end, OrderByComparator<Course> orderByComparator){
+		DynamicQuery query = dynamicQuery().add(RestrictionsFactoryUtil.eq("groupId", groupId));
+		if (Validator.isNotNull(keywords)) {
+			 Junction disjunction = RestrictionsFactoryUtil.disjunction()
+					.add(
+							RestrictionsFactoryUtil.like("name",'%'+ keywords+'%')
+					).add(
+							RestrictionsFactoryUtil.like("description",'%'+ keywords+'%')
+					);
+			 query.add(disjunction);
+		}
+		return dynamicQuery(query, start, end, orderByComparator);
+	}
+	
 
 }

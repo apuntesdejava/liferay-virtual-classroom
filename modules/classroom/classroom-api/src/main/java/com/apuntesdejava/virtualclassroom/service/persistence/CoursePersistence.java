@@ -18,6 +18,7 @@ import com.apuntesdejava.virtualclassroom.exception.NoSuchCourseException;
 import com.apuntesdejava.virtualclassroom.model.Course;
 
 import com.liferay.portal.kernel.service.persistence.BasePersistence;
+import com.liferay.portal.kernel.util.OrderByComparator;
 
 import org.osgi.annotation.versioning.ProviderType;
 
@@ -70,16 +71,18 @@ public interface CoursePersistence extends BasePersistence<Course> {
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>CourseModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
+	 * @deprecated As of Mueller (7.2.x), replaced by {@link #findByUserId(long, int, int, OrderByComparator)}
 	 * @param userId the user ID
 	 * @param start the lower bound of the range of courses
 	 * @param end the upper bound of the range of courses (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching courses
 	 */
+	@Deprecated
 	public java.util.List<Course> findByUserId(
 		long userId, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<Course>
-			orderByComparator);
+		OrderByComparator<Course> orderByComparator, boolean useFinderCache);
 
 	/**
 	 * Returns an ordered range of all the courses where userId = &#63;.
@@ -92,14 +95,11 @@ public interface CoursePersistence extends BasePersistence<Course> {
 	 * @param start the lower bound of the range of courses
 	 * @param end the upper bound of the range of courses (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @param retrieveFromCache whether to retrieve from the finder cache
 	 * @return the ordered range of matching courses
 	 */
 	public java.util.List<Course> findByUserId(
 		long userId, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<Course>
-			orderByComparator,
-		boolean retrieveFromCache);
+		OrderByComparator<Course> orderByComparator);
 
 	/**
 	 * Returns the first course in the ordered set where userId = &#63;.
@@ -110,9 +110,7 @@ public interface CoursePersistence extends BasePersistence<Course> {
 	 * @throws NoSuchCourseException if a matching course could not be found
 	 */
 	public Course findByUserId_First(
-			long userId,
-			com.liferay.portal.kernel.util.OrderByComparator<Course>
-				orderByComparator)
+			long userId, OrderByComparator<Course> orderByComparator)
 		throws NoSuchCourseException;
 
 	/**
@@ -123,9 +121,7 @@ public interface CoursePersistence extends BasePersistence<Course> {
 	 * @return the first matching course, or <code>null</code> if a matching course could not be found
 	 */
 	public Course fetchByUserId_First(
-		long userId,
-		com.liferay.portal.kernel.util.OrderByComparator<Course>
-			orderByComparator);
+		long userId, OrderByComparator<Course> orderByComparator);
 
 	/**
 	 * Returns the last course in the ordered set where userId = &#63;.
@@ -136,9 +132,7 @@ public interface CoursePersistence extends BasePersistence<Course> {
 	 * @throws NoSuchCourseException if a matching course could not be found
 	 */
 	public Course findByUserId_Last(
-			long userId,
-			com.liferay.portal.kernel.util.OrderByComparator<Course>
-				orderByComparator)
+			long userId, OrderByComparator<Course> orderByComparator)
 		throws NoSuchCourseException;
 
 	/**
@@ -149,9 +143,7 @@ public interface CoursePersistence extends BasePersistence<Course> {
 	 * @return the last matching course, or <code>null</code> if a matching course could not be found
 	 */
 	public Course fetchByUserId_Last(
-		long userId,
-		com.liferay.portal.kernel.util.OrderByComparator<Course>
-			orderByComparator);
+		long userId, OrderByComparator<Course> orderByComparator);
 
 	/**
 	 * Returns the courses before and after the current course in the ordered set where userId = &#63;.
@@ -164,8 +156,7 @@ public interface CoursePersistence extends BasePersistence<Course> {
 	 */
 	public Course[] findByUserId_PrevAndNext(
 			long courseId, long userId,
-			com.liferay.portal.kernel.util.OrderByComparator<Course>
-				orderByComparator)
+			OrderByComparator<Course> orderByComparator)
 		throws NoSuchCourseException;
 
 	/**
@@ -213,16 +204,18 @@ public interface CoursePersistence extends BasePersistence<Course> {
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>CourseModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
+	 * @deprecated As of Mueller (7.2.x), replaced by {@link #findByGroupId(long, int, int, OrderByComparator)}
 	 * @param groupId the group ID
 	 * @param start the lower bound of the range of courses
 	 * @param end the upper bound of the range of courses (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching courses
 	 */
+	@Deprecated
 	public java.util.List<Course> findByGroupId(
 		long groupId, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<Course>
-			orderByComparator);
+		OrderByComparator<Course> orderByComparator, boolean useFinderCache);
 
 	/**
 	 * Returns an ordered range of all the courses where groupId = &#63;.
@@ -235,14 +228,11 @@ public interface CoursePersistence extends BasePersistence<Course> {
 	 * @param start the lower bound of the range of courses
 	 * @param end the upper bound of the range of courses (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @param retrieveFromCache whether to retrieve from the finder cache
 	 * @return the ordered range of matching courses
 	 */
 	public java.util.List<Course> findByGroupId(
 		long groupId, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<Course>
-			orderByComparator,
-		boolean retrieveFromCache);
+		OrderByComparator<Course> orderByComparator);
 
 	/**
 	 * Returns the first course in the ordered set where groupId = &#63;.
@@ -253,9 +243,7 @@ public interface CoursePersistence extends BasePersistence<Course> {
 	 * @throws NoSuchCourseException if a matching course could not be found
 	 */
 	public Course findByGroupId_First(
-			long groupId,
-			com.liferay.portal.kernel.util.OrderByComparator<Course>
-				orderByComparator)
+			long groupId, OrderByComparator<Course> orderByComparator)
 		throws NoSuchCourseException;
 
 	/**
@@ -266,9 +254,7 @@ public interface CoursePersistence extends BasePersistence<Course> {
 	 * @return the first matching course, or <code>null</code> if a matching course could not be found
 	 */
 	public Course fetchByGroupId_First(
-		long groupId,
-		com.liferay.portal.kernel.util.OrderByComparator<Course>
-			orderByComparator);
+		long groupId, OrderByComparator<Course> orderByComparator);
 
 	/**
 	 * Returns the last course in the ordered set where groupId = &#63;.
@@ -279,9 +265,7 @@ public interface CoursePersistence extends BasePersistence<Course> {
 	 * @throws NoSuchCourseException if a matching course could not be found
 	 */
 	public Course findByGroupId_Last(
-			long groupId,
-			com.liferay.portal.kernel.util.OrderByComparator<Course>
-				orderByComparator)
+			long groupId, OrderByComparator<Course> orderByComparator)
 		throws NoSuchCourseException;
 
 	/**
@@ -292,9 +276,7 @@ public interface CoursePersistence extends BasePersistence<Course> {
 	 * @return the last matching course, or <code>null</code> if a matching course could not be found
 	 */
 	public Course fetchByGroupId_Last(
-		long groupId,
-		com.liferay.portal.kernel.util.OrderByComparator<Course>
-			orderByComparator);
+		long groupId, OrderByComparator<Course> orderByComparator);
 
 	/**
 	 * Returns the courses before and after the current course in the ordered set where groupId = &#63;.
@@ -307,8 +289,7 @@ public interface CoursePersistence extends BasePersistence<Course> {
 	 */
 	public Course[] findByGroupId_PrevAndNext(
 			long courseId, long groupId,
-			com.liferay.portal.kernel.util.OrderByComparator<Course>
-				orderByComparator)
+			OrderByComparator<Course> orderByComparator)
 		throws NoSuchCourseException;
 
 	/**
@@ -358,17 +339,19 @@ public interface CoursePersistence extends BasePersistence<Course> {
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>CourseModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
+	 * @deprecated As of Mueller (7.2.x), replaced by {@link #findByU_G(long,long, int, int, OrderByComparator)}
 	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param start the lower bound of the range of courses
 	 * @param end the upper bound of the range of courses (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching courses
 	 */
+	@Deprecated
 	public java.util.List<Course> findByU_G(
 		long userId, long groupId, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<Course>
-			orderByComparator);
+		OrderByComparator<Course> orderByComparator, boolean useFinderCache);
 
 	/**
 	 * Returns an ordered range of all the courses where userId = &#63; and groupId = &#63;.
@@ -382,14 +365,11 @@ public interface CoursePersistence extends BasePersistence<Course> {
 	 * @param start the lower bound of the range of courses
 	 * @param end the upper bound of the range of courses (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @param retrieveFromCache whether to retrieve from the finder cache
 	 * @return the ordered range of matching courses
 	 */
 	public java.util.List<Course> findByU_G(
 		long userId, long groupId, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<Course>
-			orderByComparator,
-		boolean retrieveFromCache);
+		OrderByComparator<Course> orderByComparator);
 
 	/**
 	 * Returns the first course in the ordered set where userId = &#63; and groupId = &#63;.
@@ -402,8 +382,7 @@ public interface CoursePersistence extends BasePersistence<Course> {
 	 */
 	public Course findByU_G_First(
 			long userId, long groupId,
-			com.liferay.portal.kernel.util.OrderByComparator<Course>
-				orderByComparator)
+			OrderByComparator<Course> orderByComparator)
 		throws NoSuchCourseException;
 
 	/**
@@ -415,9 +394,7 @@ public interface CoursePersistence extends BasePersistence<Course> {
 	 * @return the first matching course, or <code>null</code> if a matching course could not be found
 	 */
 	public Course fetchByU_G_First(
-		long userId, long groupId,
-		com.liferay.portal.kernel.util.OrderByComparator<Course>
-			orderByComparator);
+		long userId, long groupId, OrderByComparator<Course> orderByComparator);
 
 	/**
 	 * Returns the last course in the ordered set where userId = &#63; and groupId = &#63;.
@@ -430,8 +407,7 @@ public interface CoursePersistence extends BasePersistence<Course> {
 	 */
 	public Course findByU_G_Last(
 			long userId, long groupId,
-			com.liferay.portal.kernel.util.OrderByComparator<Course>
-				orderByComparator)
+			OrderByComparator<Course> orderByComparator)
 		throws NoSuchCourseException;
 
 	/**
@@ -443,9 +419,7 @@ public interface CoursePersistence extends BasePersistence<Course> {
 	 * @return the last matching course, or <code>null</code> if a matching course could not be found
 	 */
 	public Course fetchByU_G_Last(
-		long userId, long groupId,
-		com.liferay.portal.kernel.util.OrderByComparator<Course>
-			orderByComparator);
+		long userId, long groupId, OrderByComparator<Course> orderByComparator);
 
 	/**
 	 * Returns the courses before and after the current course in the ordered set where userId = &#63; and groupId = &#63;.
@@ -459,8 +433,7 @@ public interface CoursePersistence extends BasePersistence<Course> {
 	 */
 	public Course[] findByU_G_PrevAndNext(
 			long courseId, long userId, long groupId,
-			com.liferay.portal.kernel.util.OrderByComparator<Course>
-				orderByComparator)
+			OrderByComparator<Course> orderByComparator)
 		throws NoSuchCourseException;
 
 	/**
@@ -557,15 +530,17 @@ public interface CoursePersistence extends BasePersistence<Course> {
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>CourseModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
+	 * @deprecated As of Mueller (7.2.x), replaced by {@link #findAll(int, int, OrderByComparator)}
 	 * @param start the lower bound of the range of courses
 	 * @param end the upper bound of the range of courses (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of courses
 	 */
+	@Deprecated
 	public java.util.List<Course> findAll(
-		int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<Course>
-			orderByComparator);
+		int start, int end, OrderByComparator<Course> orderByComparator,
+		boolean useFinderCache);
 
 	/**
 	 * Returns an ordered range of all the courses.
@@ -577,14 +552,10 @@ public interface CoursePersistence extends BasePersistence<Course> {
 	 * @param start the lower bound of the range of courses
 	 * @param end the upper bound of the range of courses (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @param retrieveFromCache whether to retrieve from the finder cache
 	 * @return the ordered range of courses
 	 */
 	public java.util.List<Course> findAll(
-		int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<Course>
-			orderByComparator,
-		boolean retrieveFromCache);
+		int start, int end, OrderByComparator<Course> orderByComparator);
 
 	/**
 	 * Removes all the courses from the database.

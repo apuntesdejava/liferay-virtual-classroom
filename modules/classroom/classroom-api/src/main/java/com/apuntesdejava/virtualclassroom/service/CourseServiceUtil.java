@@ -61,6 +61,19 @@ public class CourseServiceUtil {
 		return getService().countByUserId(userId);
 	}
 
+	public static com.apuntesdejava.virtualclassroom.model.Course deleteCourse(
+			long courseId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return getService().deleteCourse(courseId);
+	}
+
+	public static com.apuntesdejava.virtualclassroom.model.Course fetchCourse(
+		long courseId) {
+
+		return getService().fetchCourse(courseId);
+	}
+
 	public static java.util.List
 		<com.apuntesdejava.virtualclassroom.model.Course> findByGroupId(
 			long groupId) {
@@ -73,6 +86,17 @@ public class CourseServiceUtil {
 			long groupId, int start, int end) {
 
 		return getService().findByGroupId(groupId, start, end);
+	}
+
+	public static java.util.List
+		<com.apuntesdejava.virtualclassroom.model.Course> findByKeywords(
+			long groupId, String keywords, int start, int end,
+			com.liferay.portal.kernel.util.OrderByComparator
+				<com.apuntesdejava.virtualclassroom.model.Course>
+					orderByComparator) {
+
+		return getService().findByKeywords(
+			groupId, keywords, start, end, orderByComparator);
 	}
 
 	public static java.util.List

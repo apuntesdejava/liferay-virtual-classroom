@@ -60,6 +60,21 @@ public class CourseServiceWrapper
 	}
 
 	@Override
+	public com.apuntesdejava.virtualclassroom.model.Course deleteCourse(
+			long courseId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _courseService.deleteCourse(courseId);
+	}
+
+	@Override
+	public com.apuntesdejava.virtualclassroom.model.Course fetchCourse(
+		long courseId) {
+
+		return _courseService.fetchCourse(courseId);
+	}
+
+	@Override
 	public java.util.List<com.apuntesdejava.virtualclassroom.model.Course>
 		findByGroupId(long groupId) {
 
@@ -71,6 +86,18 @@ public class CourseServiceWrapper
 		findByGroupId(long groupId, int start, int end) {
 
 		return _courseService.findByGroupId(groupId, start, end);
+	}
+
+	@Override
+	public java.util.List<com.apuntesdejava.virtualclassroom.model.Course>
+		findByKeywords(
+			long groupId, String keywords, int start, int end,
+			com.liferay.portal.kernel.util.OrderByComparator
+				<com.apuntesdejava.virtualclassroom.model.Course>
+					orderByComparator) {
+
+		return _courseService.findByKeywords(
+			groupId, keywords, start, end, orderByComparator);
 	}
 
 	@Override

@@ -23,7 +23,9 @@ import com.liferay.portal.kernel.security.access.control.AccessControlled;
 import com.liferay.portal.kernel.service.BaseService;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.transaction.Isolation;
+import com.liferay.portal.kernel.transaction.Propagation;
 import com.liferay.portal.kernel.transaction.Transactional;
+import com.liferay.portal.kernel.util.OrderByComparator;
 
 import java.util.List;
 import java.util.Locale;
@@ -65,9 +67,18 @@ public interface CourseService extends BaseService {
 
 	public int countByUserId(long userId);
 
+	public Course deleteCourse(long courseId) throws PortalException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public Course fetchCourse(long courseId);
+
 	public List<Course> findByGroupId(long groupId);
 
 	public List<Course> findByGroupId(long groupId, int start, int end);
+
+	public List<Course> findByKeywords(
+		long groupId, String keywords, int start, int end,
+		OrderByComparator<Course> orderByComparator);
 
 	public List<Course> findByU_G(long userId, long groupId);
 

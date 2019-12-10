@@ -155,18 +155,21 @@ public class CourseUtil {
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>CourseModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
+	 * @deprecated As of Mueller (7.2.x), replaced by {@link #findByUserId(long, int, int, OrderByComparator)}
 	 * @param userId the user ID
 	 * @param start the lower bound of the range of courses
 	 * @param end the upper bound of the range of courses (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching courses
 	 */
+	@Deprecated
 	public static List<Course> findByUserId(
 		long userId, int start, int end,
-		OrderByComparator<Course> orderByComparator) {
+		OrderByComparator<Course> orderByComparator, boolean useFinderCache) {
 
 		return getPersistence().findByUserId(
-			userId, start, end, orderByComparator);
+			userId, start, end, orderByComparator, useFinderCache);
 	}
 
 	/**
@@ -180,16 +183,14 @@ public class CourseUtil {
 	 * @param start the lower bound of the range of courses
 	 * @param end the upper bound of the range of courses (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @param retrieveFromCache whether to retrieve from the finder cache
 	 * @return the ordered range of matching courses
 	 */
 	public static List<Course> findByUserId(
 		long userId, int start, int end,
-		OrderByComparator<Course> orderByComparator,
-		boolean retrieveFromCache) {
+		OrderByComparator<Course> orderByComparator) {
 
 		return getPersistence().findByUserId(
-			userId, start, end, orderByComparator, retrieveFromCache);
+			userId, start, end, orderByComparator);
 	}
 
 	/**
@@ -321,18 +322,21 @@ public class CourseUtil {
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>CourseModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
+	 * @deprecated As of Mueller (7.2.x), replaced by {@link #findByGroupId(long, int, int, OrderByComparator)}
 	 * @param groupId the group ID
 	 * @param start the lower bound of the range of courses
 	 * @param end the upper bound of the range of courses (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching courses
 	 */
+	@Deprecated
 	public static List<Course> findByGroupId(
 		long groupId, int start, int end,
-		OrderByComparator<Course> orderByComparator) {
+		OrderByComparator<Course> orderByComparator, boolean useFinderCache) {
 
 		return getPersistence().findByGroupId(
-			groupId, start, end, orderByComparator);
+			groupId, start, end, orderByComparator, useFinderCache);
 	}
 
 	/**
@@ -346,16 +350,14 @@ public class CourseUtil {
 	 * @param start the lower bound of the range of courses
 	 * @param end the upper bound of the range of courses (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @param retrieveFromCache whether to retrieve from the finder cache
 	 * @return the ordered range of matching courses
 	 */
 	public static List<Course> findByGroupId(
 		long groupId, int start, int end,
-		OrderByComparator<Course> orderByComparator,
-		boolean retrieveFromCache) {
+		OrderByComparator<Course> orderByComparator) {
 
 		return getPersistence().findByGroupId(
-			groupId, start, end, orderByComparator, retrieveFromCache);
+			groupId, start, end, orderByComparator);
 	}
 
 	/**
@@ -492,19 +494,22 @@ public class CourseUtil {
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>CourseModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
+	 * @deprecated As of Mueller (7.2.x), replaced by {@link #findByU_G(long,long, int, int, OrderByComparator)}
 	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param start the lower bound of the range of courses
 	 * @param end the upper bound of the range of courses (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching courses
 	 */
+	@Deprecated
 	public static List<Course> findByU_G(
 		long userId, long groupId, int start, int end,
-		OrderByComparator<Course> orderByComparator) {
+		OrderByComparator<Course> orderByComparator, boolean useFinderCache) {
 
 		return getPersistence().findByU_G(
-			userId, groupId, start, end, orderByComparator);
+			userId, groupId, start, end, orderByComparator, useFinderCache);
 	}
 
 	/**
@@ -519,16 +524,14 @@ public class CourseUtil {
 	 * @param start the lower bound of the range of courses
 	 * @param end the upper bound of the range of courses (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @param retrieveFromCache whether to retrieve from the finder cache
 	 * @return the ordered range of matching courses
 	 */
 	public static List<Course> findByU_G(
 		long userId, long groupId, int start, int end,
-		OrderByComparator<Course> orderByComparator,
-		boolean retrieveFromCache) {
+		OrderByComparator<Course> orderByComparator) {
 
 		return getPersistence().findByU_G(
-			userId, groupId, start, end, orderByComparator, retrieveFromCache);
+			userId, groupId, start, end, orderByComparator);
 	}
 
 	/**
@@ -743,15 +746,20 @@ public class CourseUtil {
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>CourseModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
+	 * @deprecated As of Mueller (7.2.x), replaced by {@link #findAll(int, int, OrderByComparator)}
 	 * @param start the lower bound of the range of courses
 	 * @param end the upper bound of the range of courses (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of courses
 	 */
+	@Deprecated
 	public static List<Course> findAll(
-		int start, int end, OrderByComparator<Course> orderByComparator) {
+		int start, int end, OrderByComparator<Course> orderByComparator,
+		boolean useFinderCache) {
 
-		return getPersistence().findAll(start, end, orderByComparator);
+		return getPersistence().findAll(
+			start, end, orderByComparator, useFinderCache);
 	}
 
 	/**
@@ -764,15 +772,12 @@ public class CourseUtil {
 	 * @param start the lower bound of the range of courses
 	 * @param end the upper bound of the range of courses (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @param retrieveFromCache whether to retrieve from the finder cache
 	 * @return the ordered range of courses
 	 */
 	public static List<Course> findAll(
-		int start, int end, OrderByComparator<Course> orderByComparator,
-		boolean retrieveFromCache) {
+		int start, int end, OrderByComparator<Course> orderByComparator) {
 
-		return getPersistence().findAll(
-			start, end, orderByComparator, retrieveFromCache);
+		return getPersistence().findAll(start, end, orderByComparator);
 	}
 
 	/**
